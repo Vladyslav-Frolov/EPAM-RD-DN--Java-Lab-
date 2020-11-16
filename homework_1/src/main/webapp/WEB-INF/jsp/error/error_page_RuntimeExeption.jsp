@@ -10,25 +10,21 @@
 <html lang="${sessionScope.lang}">
 
 <head>
-    <title>Home page</title>
+    <title>Error page RuntimeException</title>
     <link rel="stylesheet" href="css/style.css">
+    <style>
+    </style>
 </head>
 
 <body>
-<h1><fmt:message key="main.greetings"/></h1>
+<fmt:message key="label.error_runtime_exception"/>
 
 
+<form action="/frontControllerServlet" method="post">
+    <button class="design" name="command" value="homePage"><fmt:message key="label.homePage"/></button>
+</form>
 
 
-
-
-
-
-<%--форма запроса на выбор номеров по дате--%>
-<%@ include file="/WEB-INF/jsp/common/room_search_form.jsp" %>
-
+<%@ include file="/WEB-INF/jsp/common/footer.jsp" %>
 </body>
 </html>
-
-<%--внедрение футера--%>
-<%@ include file="/WEB-INF/jsp/common/footer.jsp" %>
