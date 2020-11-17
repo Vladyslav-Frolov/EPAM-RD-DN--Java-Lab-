@@ -25,7 +25,7 @@ public class ToBookCommand extends Command {
                           HttpServletResponse response) {
         //TODO добавить проверку на админа
         LOGGER.debug("Command starts");
-        LOGGER.trace("1tb - я в комманде toBook");
+        LOGGER.trace("1tb - I'm in toBook command");
 
         User registeredUser = (User) request.getSession().getAttribute("user");
 
@@ -57,14 +57,14 @@ public class ToBookCommand extends Command {
             }
         }
 
-        LOGGER.trace("10tb - начал вынимать все заказы in toBook: ");
+        LOGGER.trace("10tb - started taking out all orders in toBook: ");
 
         // процедура вынимания списка зказа юзера
         List<Order> ordersOfUsers = new OrderDao().getUserOrders(registeredUser);
         ordersOfUsers.sort((o1, o2) -> (int) (o1.getId() - o2.getId()));
         request.getSession().setAttribute("ordersOfUsers", ordersOfUsers);
 
-        LOGGER.trace("11tb - вынул все зказы и прееложил в сессию in toBook: ");
+        LOGGER.trace("11tb - took out all the orders and offered to the session in toBook: ");
 
 
 

@@ -27,34 +27,34 @@ public class SignInCommand extends Command {
         HttpSession session = request.getSession();
 
         LOGGER.trace("я в sign in");
-        // 1. Получение введённого логина и пароля
+        // 1. Getting the entered username and password
         String login = request.getParameter("username");
         String password = request.getParameter("pass");
         LOGGER.trace("login: " + login + " pass:" + password);
 
-        // 2. Валидация логина и пароля на пустоту и т. п.
+        // 2. Login and password validation for emptiness, etc.
 
-        // 3. Получение юзера или получение null
+        // 3. Getting user or getting null
         User user = new UserDao().getUser(login, password);
         LOGGER.trace(user);
         LOGGER.trace(user.getRole());
         session.setAttribute("user", user);
         session.setAttribute("userRole", user.getRole());
 
-        // 4. Отправка сообщения об ошибке аутентификации
+        // 4. Send an Authentication Error Message
         if (user == null) {
             LOGGER.trace("такого юзера нет");
             request.setAttribute("identification_error", "Wrong login or password");
             return Path.PAGE_LOGIN;
         }
 
-        //4.1 Получение всех заказов юзера после успешной регистрации
-        // процедура вынимания списка зказа юзера
+        //4.1 Receiving all user orders after successful registration
+        // procedure for taking out the user's order list
         List<Order> ordersOfUsers = new OrderDao().getUserOrders((User) request.getSession().getAttribute("user"));
         ordersOfUsers.sort((o1, o2) -> (int) (o1.getId() - o2.getId()));
         request.getSession().setAttribute("ordersOfUsers", ordersOfUsers);
 
-        // 5. В случае успешной аутетификации перенаправление на личный кабинет
+        // 5. In case of successful authentication, redirection to your personal account
         LOGGER.debug("Command finished");
         return Path.REDIRECT_PERSONAL_ACCOUNT;
     }

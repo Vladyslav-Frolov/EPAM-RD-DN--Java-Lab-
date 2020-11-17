@@ -5,10 +5,10 @@
          version="4.0">
 
     <!--============================================================
-        Пул соединений
+        Connection pool
     =============================================================-->
-    <!--Передача управления пулом серверу Томкет через связь с контекстом,
-    остальные настройки находятся в контексте-->
+    <!--Transfer of pool control to the Tomcat server via context link,
+    the rest of the settings are in the context-->
     <description>MySQL</description>
     <resource-ref>
         <description>MySQL DB Connection Pool</description>
@@ -18,7 +18,7 @@
     </resource-ref>
 
     <!--============================================================
-        Сервлет и общие настройки
+       Servlet and general settings
     =============================================================-->
     <servlet>
         <display-name>frontControllerServlet</display-name>
@@ -37,24 +37,24 @@
         <url-pattern>/frontControllerServlet</url-pattern>
     </servlet-mapping>
 
-    <!--главная страница по умолчанию-->
+    <!--default home page-->
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
 
-    <!--страница ошибки по коду ответа от сервера-->
+    <!--server response code error page-->
     <error-page>
         <error-code>404</error-code>
         <location>/WEB-INF/jsp/error/error_page_404.jsp</location>
     </error-page>
 
-    <!--страница ошибки по типу ошибки Java кода-->
+    <!--error page by Java code error type-->
     <error-page>
         <exception-type>java.lang.RuntimeException</exception-type>
         <location>/WEB-INF/jsp/error/error_page_RuntimeExeption.jsp</location>
     </error-page>
 
-    <!--конфигурация сессии-->
+    <!--session configuration-->
     <session-config>
         <session-timeout>30</session-timeout>
     </session-config>
@@ -63,7 +63,7 @@
         i18n support
     =============================================================-->
 
-    <!--Регистрация фильтра i18n в системе и привязка фильтра к сервлету-->
+    <!--Registering the i18n filter in the system and binding the filter to the servlet-->
     <filter>
         <filter-name>SessionLocaleFilter</filter-name>
         <filter-class>
@@ -80,7 +80,7 @@
         <servlet-name>frontControllerServlet</servlet-name>
     </filter-mapping>
 
-    <!--привзяка фильтра к странице или сервлету по URL-->
+    <!--binding a filter to a page or servlet by URL-->
     <filter-mapping>
         <filter-name>SessionLocaleFilter</filter-name>
         <url-pattern>/*</url-pattern>
@@ -97,7 +97,7 @@
     parameters filter
     =============================================================-->
 
-    <!--Регистрация фильтра с важными параметрами в системе и привязка фильтра к сервлету-->
+    <!--Registering a filter with important parameters in the system and binding the filter to a servlet-->
     <filter>
         <filter-name>SessionParametersFilter</filter-name>
         <filter-class>
@@ -114,7 +114,7 @@
         <servlet-name>frontControllerServlet</servlet-name>
     </filter-mapping>
 
-    <!--привзяка фильтра к странице или сервлету по URL-->
+    <!--binding a filter to a page or servlet by URL-->
     <filter-mapping>
         <filter-name>SessionParametersFilter</filter-name>
         <url-pattern>/*</url-pattern>
@@ -128,7 +128,7 @@
 
 
 
-    <!--Регистрация фильтра authorization в системе и привязка фильтра к сервлету-->
+    <!--Registering the authorization filter in the system and binding the filter to the servlet-->
     <filter>
         <filter-name>AccessFilter</filter-name>
         <filter-class>
@@ -145,7 +145,7 @@
         <servlet-name>frontControllerServlet</servlet-name>
     </filter-mapping>
 
-    <!--привзяка фильтра к странице или сервлету по URL-->
+    <!--binding a filter to a page or servlet by URL-->
     <filter-mapping>
         <filter-name>AccessFilter</filter-name>
         <url-pattern>/*</url-pattern>

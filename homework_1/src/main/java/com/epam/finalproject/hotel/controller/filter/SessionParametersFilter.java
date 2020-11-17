@@ -14,7 +14,7 @@ private static final Logger LOGGER = Logger.getLogger(SessionParametersFilter.cl
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
             throws IOException, ServletException {
         LOGGER.debug("doFilter starts");
-        LOGGER.trace("€ в фильтре важных параметров");
+        LOGGER.trace("I'm in the filter of important parameters");
         HttpServletRequest req = (HttpServletRequest) request;
 
         if (req.getParameter("room_id") != null)
@@ -50,7 +50,7 @@ private static final Logger LOGGER = Logger.getLogger(SessionParametersFilter.cl
         if (req.getParameter(Const.COMMIT_TRUE) != null && req.getParameter(Const.COMMIT_TRUE).equals("commitFalse")) {
             req.getSession().setAttribute("commitTrue", req.getParameter(Const.COMMIT_TRUE));
         }
-        LOGGER.trace("переложил важные параметры в сессию и вышел из фильтра");
+        LOGGER.trace("transferred important parameters to the session and exited the filter");
         LOGGER.debug("doFilter finished");
         chain.doFilter(request, response);
     }

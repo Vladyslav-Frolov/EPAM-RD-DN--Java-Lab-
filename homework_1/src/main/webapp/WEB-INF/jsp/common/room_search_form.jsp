@@ -15,9 +15,9 @@
 <body>
 <%--TODO дописать валидацию выбора дат через JSTL--%>
 <%--TODO--%>
-<div>[TODO: дабавить в выборку условие по количеству людей (пока выборка происходит только по датам)]</div>
+<div>[TODO: добавить в выборку условие по количеству людей (пока выборка происходит только по датам)]</div>
 
-<%--форма запроса на выбор номеров по дате--%>
+<%--request form for choosing rooms by date--%>
 <div id="nav_menu">
     <form id="free_rooms_list" action="/frontControllerServlet" method="post">
         <input type="hidden" name="command" value="fetchRooms"/>

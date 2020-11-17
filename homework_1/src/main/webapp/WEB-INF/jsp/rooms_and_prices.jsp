@@ -14,19 +14,19 @@
 <body>
 <h1><fmt:message key="navbar.rooms_and_price"/></h1>
 
-<%--форма запроса на выбор номеров по дате--%>
+<%--request form for choosing rooms by date--%>
 <%@ include file="/WEB-INF/jsp/common/room_search_form.jsp" %>
 
 <%--TODO--%>
 <div>[TODO: добавить перечень номеров и скрывать его при выборке фильтра]</div>
 
 
-<%--просьба о вводе данных → сделать локализацию--%>
+<%--request for data entry -> TODO localization--%>
 <c:if test="${not empty enter_period}">
     <fmt:message key="rooms_and_prices.enter_period"/>
 </c:if>
 
-<%--вывод таблицы, если параметр не пустой--%>
+<%--table output if parameter is not empty--%>
 <c:if test="${not empty freeRoomsList}">
 
     <table class="table">
@@ -74,5 +74,5 @@
 </body>
 </html>
 
-<%--внедрение футера--%>
+<%--footer embedding--%>
 <%@ include file="/WEB-INF/jsp/common/footer.jsp" %>

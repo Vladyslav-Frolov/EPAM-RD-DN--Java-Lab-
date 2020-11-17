@@ -18,7 +18,7 @@
     <div class="btn-group">
         <a href="?command=homePage" class="logo"><fmt:message key="navbar.logo"/></a>
 
-        <%--выбор языка--%>
+        <%--language selection--%>
         <form id="lang">
             <select required name="sessionLocale" onchange="this.form.submit()">
                 <option value="" hidden disabled selected>
@@ -30,7 +30,7 @@
         </form>
 
 
-        <%--кнопки--%>
+        <%--buttons--%>
         <%--TODO добавить смену кнопка на разлогинивание вместо кнопки залогинивания--%>
         <c:choose>
             <c:when test="${ empty user }" >
@@ -51,27 +51,27 @@
 
     </div>
 </div>
-<%--перейти на страницу логина--%>
+<%--go to login page--%>
 <form id="login" action="/frontControllerServlet" method="post">
     <input type="hidden" name="command" value="login"/>
 </form>
 
-<%--перейти на главную--%>
+<%--go to Main page--%>
 <form id="main_page" action="/frontControllerServlet" method="post">
     <input type="hidden" name="command" value="homePage"/>
 </form>
 
-<%--перейти в личный кабинет--%>
+<%--go to personal account--%>
 <form id="own_cabinet" action="/frontControllerServlet" method="post">
     <input type="hidden" name="command" value="ownCabinet"/>
 </form>
 
-<%--перейти на перень номеров и цен--%>
+<%--go to the numbers and prices page--%>
 <form id="rooms_and_price" action="/frontControllerServlet" method="post">
     <input type="hidden" name="command" value="roomsAndPrice"/>
 </form>
 
-<%--выйти, разлогинится --%>
+<%--log out--%>
 <form id="logout_" action="/frontControllerServlet" method="post">
     <input type="hidden" name="command" value="logout"/>
 </form>

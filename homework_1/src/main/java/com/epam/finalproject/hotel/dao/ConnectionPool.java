@@ -34,13 +34,12 @@ class ConnectionPool {
      * method you must configure the Date Source and the Connections Pool in your
      * WEB_APP_ROOT/META-INF/context.xml file.
      *
-     * ƒл€ реализации стратегии конфигурации пула средствами Tomcat ЧЧ>
-     * в web.xml добавл€етс€ тег описани€ ресурса <resource-ref>
+     * To implement the pool configuration strategy by means Tomcat ЧЧ>
+     * a resource description tag is added to web.xml <resource-ref>
      *
      * @return A DB connection.
      */
     static Connection getConnection() throws SQLException {
         return dataSource.getConnection();
     }
-// метод возвращени€ Connection в пул не прописан, т. к. используетс€ try с ресурсами
 }

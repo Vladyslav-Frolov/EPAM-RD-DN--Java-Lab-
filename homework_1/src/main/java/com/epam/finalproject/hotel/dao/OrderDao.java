@@ -45,7 +45,7 @@ public class OrderDao {
 
     public boolean insertNewOrder(Order order) {
         LOGGER.debug("insertNewOrder starts");
-        LOGGER.trace("iNo-1 я вошёл в команду добавления нового заказа");
+        LOGGER.trace("iNo-1 I entered the command for adding a new order");
         try (Connection connection = ConnectionPool.getConnection();
              PreparedStatement ps = connection.prepareStatement(SQL_INSERT_ORDER)) {
             connection.setAutoCommit(false);
@@ -68,7 +68,7 @@ public class OrderDao {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        LOGGER.trace("iNo-2 я вышел из команды добавления нового заказа");
+        LOGGER.trace("iNo-2 I left the command for adding a new order");
         LOGGER.debug("insertNewOrder finished");
         return true;
     }

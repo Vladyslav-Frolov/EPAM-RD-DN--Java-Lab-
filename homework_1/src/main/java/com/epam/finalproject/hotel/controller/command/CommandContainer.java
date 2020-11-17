@@ -18,8 +18,8 @@ public class CommandContainer {
 
     private static final Logger LOGGER = Logger.getLogger(CommandContainer.class);
 
-    private static Map<String, Command> commands = new TreeMap<>();
-    private static List<String> authorizedCommands = new ArrayList<>();
+    private static final Map<String, Command> commands = new TreeMap<>();
+    private static final List<String> authorizedCommands = new ArrayList<>();
 
     static {
         // commands

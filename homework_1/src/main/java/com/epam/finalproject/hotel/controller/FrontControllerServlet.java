@@ -38,43 +38,43 @@ public class FrontControllerServlet extends HttpServlet {
     private void process(HttpServletRequest request,
                          HttpServletResponse response) throws IOException, ServletException, SQLException {
 
-        LOGGER.debug("ЧЧ> Controller starts");
+        LOGGER.debug("--> Controller starts");
         // 1. extract command name from the request
         String commandName = request.getParameter("command");
-        LOGGER.trace("ЧЧ> Request parameter: command --> " + commandName);
+        LOGGER.trace("--> Request parameter: command --> " + commandName);
 
 
         // 1.2. переход на предыдущую страницу (через сохранЄнную команду) или сохранение текущей команды
         if (commandName == null) {
-            LOGGER.trace("€ в диспетчере и тут пусто");
+            LOGGER.trace("I'm in the dispatcher and it's empty");
             commandName = (String) request.getSession().getAttribute("path");
-            LOGGER.trace("+ 1. исполн€ю предедыщующую команду: " + commandName);
+            LOGGER.trace("+ 1-1. I execute the previous command: " + commandName);
         } else {
             request.getSession().setAttribute("path", commandName);
-            LOGGER.trace("+ 1. выполнил новую команду и записал атрибут сессии: " + commandName);
+            LOGGER.trace("+ 1-2. executed a new command and wrote down the session attribute: " + commandName);
         }
 
 
         // 2. obtain command object by its name
         Command command = CommandContainer.get(commandName);
-        LOGGER.trace("ЧЧ> Obtained command --> " + command);
-        LOGGER.trace("+ 2. вытащил команду: " + commandName + " = " + command);
+        LOGGER.trace("--> Obtained command --> " + command);
+        LOGGER.trace("+ 2. pulled the command: " + commandName + " = " + command);
 
 
         // 3. execute command and get forward address
         String forward = null;
-        LOGGER.trace("+ 3. начал выполн€ть команду: " + commandName);
+        LOGGER.trace("+ 3. started executing the command: " + commandName);
         forward = command.execute(request, response);
-        LOGGER.trace("+ 4. выполнил команду: " + commandName);
-        LOGGER.trace("ЧЧ> Forward address --> " + forward);
-        LOGGER.debug("ЧЧ> Controller finished, now go to forward address --> " + forward);
+        LOGGER.trace("+ 4. executed the command: " + commandName);
+        LOGGER.trace("--> Forward address --> " + forward);
+        LOGGER.debug("--> Controller finished, now go to forward address --> " + forward);
 
 
         // 4. if the forward address is not null go to the address
         if (forward != null) {
             if (forward.contains("redirect")) {
-                forward = forward.replaceAll("\\Qredirect/\\E", "");
-                LOGGER.trace("€ в редиректе: " + forward);
+                forward = forward.replace("redirect/", "");
+                LOGGER.trace("I'm in redirect: " + forward);
                 response.sendRedirect(forward);
             }else{
                 request.getRequestDispatcher(forward).forward(request, response);
@@ -82,7 +82,7 @@ public class FrontControllerServlet extends HttpServlet {
 
         } else {
             request.getRequestDispatcher(Path.PAGE_ERROR_PAGE).forward(request, response);
-            LOGGER.trace("null в адресе форварда");
+            LOGGER.trace("null in forward address");
         }
     }
 }

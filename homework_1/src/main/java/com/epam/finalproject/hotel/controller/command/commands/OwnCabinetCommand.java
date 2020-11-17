@@ -18,8 +18,8 @@ public class OwnCabinetCommand extends Command {
     public String execute(HttpServletRequest request,
                           HttpServletResponse response) {
         LOGGER.debug("Command starts");
-        //4.1 Получение всех заказов юзера после успешной регистрации
-        // процедура вынимания списка зказа юзера
+        //4.1 Receiving all user orders after successful registration
+        // procedure for taking out the user's order list
         List<Order> ordersOfUsers = new OrderDao().getUserOrders((User) request.getSession().getAttribute("user"));
         ordersOfUsers.sort((o1, o2) -> (int) (o1.getId() - o2.getId()));
         request.getSession().setAttribute("ordersOfUsers", ordersOfUsers);

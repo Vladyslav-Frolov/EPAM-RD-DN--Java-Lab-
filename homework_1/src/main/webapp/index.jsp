@@ -24,11 +24,11 @@
 
 
 
-<%--форма запроса на выбор номеров по дате--%>
+<%--request form for choosing rooms by date--%>
 <%@ include file="/WEB-INF/jsp/common/room_search_form.jsp" %>
 
 </body>
 </html>
 
-<%--внедрение футера--%>
+<%--footer embedding--%>
 <%@ include file="/WEB-INF/jsp/common/footer.jsp" %>

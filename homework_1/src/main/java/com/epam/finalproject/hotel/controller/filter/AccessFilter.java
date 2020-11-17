@@ -41,7 +41,7 @@ public class AccessFilter implements Filter {
             return false;
 
         if (!CommandContainer.isAuthorized(commandName)) {
-            LOGGER.trace("filter command consist: " + CommandContainer.isAuthorized(commandName) + ", не фильтруем");
+            LOGGER.trace("filter command consist: " + CommandContainer.isAuthorized(commandName) + ", do not filter");
             return true;
         }
 
