@@ -4,14 +4,17 @@
 
 <fmt:setBundle basename="messages"/>
 
-<%@ include file="/WEB-INF/jsp/common/header.jsp" %>
 
 <!DOCTYPE html>
 <html lang="${sessionScope.lang_var}">
 <head>
     <title>Rooms and prices</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="icon" href="../../css/images/favicon.ico" type="image/x-icon" />
 </head>
 <body>
+<%@ include file="/WEB-INF/jsp/common/header.jsp" %>
+
 <h1><fmt:message key="navbar.rooms_and_price"/></h1>
 
 <%--request form for choosing rooms by date--%>

@@ -9,7 +9,7 @@ import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
 import java.io.File;
 
-@WebListener("application context listener")
+//@WebListener("application context listener") // switch to spring-mvc initializer config
 public class ContextListener implements ServletContextListener {
     @Override
     public void contextInitialized(ServletContextEvent event) {
@@ -23,5 +23,4 @@ public class ContextListener implements ServletContextListener {
         final Logger logger = Logger.getLogger(ContextListener.class);
         logger.debug("contextInitialized finished");
     }
-
 }

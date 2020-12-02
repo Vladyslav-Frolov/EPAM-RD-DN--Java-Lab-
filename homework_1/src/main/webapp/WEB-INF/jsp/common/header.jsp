@@ -8,12 +8,12 @@
 <!DOCTYPE html>
 <html lang="${sessionScope.lang}">
 <head>
-    <title>Title</title>
+    <title>Hotel</title>
     <link rel="stylesheet" href="../../css/style.css">
+    <link rel="icon" href="../../css/images/favicon.ico" type="image/x-icon" />
 </head>
 <body class="main">
 <div class="header-left">
-
 
     <div class="btn-group">
         <a href="?command=homePage" class="logo"><fmt:message key="navbar.logo"/></a>
@@ -28,7 +28,6 @@
                 <option value="uk"><fmt:message key="label.lang.uk"/></option>
             </select>
         </form>
-
 
         <%--buttons--%>
         <%--TODO добавить смену кнопка на разлогинивание вместо кнопки залогинивания--%>

@@ -4,21 +4,23 @@
 
 <fmt:setBundle basename="messages"/>
 
-<%@ include file="/WEB-INF/jsp/common/header.jsp" %>
 
 <!DOCTYPE html>
 <html lang="${sessionScope.lang}">
 
 <head>
     <title>Error page</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../../../css/style.css">
+    <link rel="icon" href="../../../css/images/favicon.ico" type="image/x-icon" />
     <style>
     </style>
 </head>
 
 <body>
-<fmt:message key="label.error"/>
+<%@ include file="/WEB-INF/jsp/common/header.jsp" %>
 
+<fmt:message key="label.error"/>
+<h1>${errorMsg}</h1>
 
 <form action="/frontControllerServlet" method="post">
     <button class="design" name="command" value="homePage"><fmt:message key="label.homePage"/></button>

@@ -4,7 +4,7 @@
 
 <fmt:setBundle basename="messages"/>
 
-<%@ include file="/WEB-INF/jsp/common/header.jsp" %>
+
 
 <!DOCTYPE html>
 <html lang="${sessionScope.lang}">
@@ -12,17 +12,13 @@
 <head>
     <title>Home page</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="css/images/favicon.ico" type="image/x-icon" />
 </head>
 
 <body>
+<%@ include file="/WEB-INF/jsp/common/header.jsp" %>
+
 <h1><fmt:message key="main.greetings"/></h1>
-
-
-
-
-
-
-
 
 <%--request form for choosing rooms by date--%>
 <%@ include file="/WEB-INF/jsp/common/room_search_form.jsp" %>
@@ -32,3 +28,5 @@
 
 <%--footer embedding--%>
 <%@ include file="/WEB-INF/jsp/common/footer.jsp" %>
+
+

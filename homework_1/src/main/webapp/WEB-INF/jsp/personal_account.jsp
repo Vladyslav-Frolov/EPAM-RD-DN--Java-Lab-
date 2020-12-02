@@ -4,13 +4,11 @@
 
 <fmt:setBundle basename="messages"/>
 
-<%@ include file="/WEB-INF/jsp/common/header.jsp" %>
-
 <c:set var="refresh" value="${15*60}"/>
 <c:set var="timeshift" value="<%=new java.util.Date(new java.util.Date().getTime() + 15*60*1000)%>"/>
 <c:set var="fiftyminute" scope="page">
     <%--TODO вытащить месяц в английской локализации при помощи формата--%>
-    Nov <fmt:formatDate pattern="dd, YYYY kk:mm:ss" value="${timeshift}"/>
+    Dec <fmt:formatDate pattern="dd, YYYY kk:mm:ss" value="${timeshift}"/>
 </c:set>
 
 
@@ -18,10 +16,12 @@
 <html lang="${sessionScope.lang}">
 <head>
     <title>Own cabinet</title>
-
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="icon" href="../../css/images/favicon.ico" type="image/x-icon" />
     <meta http-equiv="refresh" content="${refresh}"/>
 </head>
 <body>
+<%@ include file="/WEB-INF/jsp/common/header.jsp" %>
 
 <h1><fmt:message key="login.personal_account"/></h1>
 

@@ -16,5 +16,6 @@ public final class Path {
 	public static final String PAGE_SIGN_UP = "WEB-INF/jsp/sign_up.jsp";
 
 	// commands
-	public static final String REDIRECT_PERSONAL_ACCOUNT = "redirect/http://localhost:8080/frontControllerServlet?command=ownCabinet";
+	public static final String REDIRECT_PERSONAL_ACCOUNT =
+			"redirect/http://localhost:8080/frontControllerServlet?command=ownCabinet";
 }

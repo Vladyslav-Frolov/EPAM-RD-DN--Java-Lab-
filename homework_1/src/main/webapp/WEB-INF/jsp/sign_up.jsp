@@ -4,18 +4,21 @@
 
 <fmt:setBundle basename="messages"/>
 
-<%@ include file="/WEB-INF/jsp/common/header.jsp" %>
 
 <!DOCTYPE html>
 <html lang="${sessionScope.lang}">
 <head>
-    <title>Title</title>
+    <title>Sign up</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="icon" href="../../css/images/favicon.ico" type="image/x-icon" />
 
 <%--    <meta name="viewport" content="width=device-width, initial-scale=1">--%>
 <%--    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">--%>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
+<%@ include file="/WEB-INF/jsp/common/header.jsp" %>
+
 <%--TODO локализировать--%>
 <%--TODO валидировать--%>
 <%--TODO--%>

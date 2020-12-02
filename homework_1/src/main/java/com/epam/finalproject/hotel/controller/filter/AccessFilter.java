@@ -19,11 +19,14 @@ public class AccessFilter implements Filter {
         HttpServletRequest req = (HttpServletRequest) request;
 
         if (accessAllowed(req)) {
+            LOGGER.trace("access allowed, executing the selected command");
             chain.doFilter(request, response);
         } else {
             String errorMessasge = "you need to log in";
 
             req.setAttribute("errorMessage", errorMessasge);
+
+            LOGGER.trace("access not allowed, forward to --> " + Path.PAGE_LOGIN);
 
             req.getRequestDispatcher(Path.PAGE_LOGIN)
                     .forward(request, response);
@@ -41,7 +44,8 @@ public class AccessFilter implements Filter {
             return false;
 
         if (!CommandContainer.isAuthorized(commandName)) {
-            LOGGER.trace("filter command consist: " + CommandContainer.isAuthorized(commandName) + ", do not filter");
+            LOGGER.trace("filter command consist: " + CommandContainer.isAuthorized(commandName) +
+                    ", do not filter, return true");
             return true;
         }
 

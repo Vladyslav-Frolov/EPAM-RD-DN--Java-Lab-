@@ -4,19 +4,21 @@
 
 <fmt:setBundle basename="messages"/>
 
-<%@ include file="/WEB-INF/jsp/common/header.jsp" %>
 
 <!DOCTYPE html>
 <html lang="${sessionScope.lang}">
 
 <head>
     <title>Error page 404</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../../../css/style.css">
+    <link rel="icon" href="../../../css/images/favicon.ico" type="image/x-icon" />
     <style>
     </style>
 </head>
 
 <body>
+<%@ include file="/WEB-INF/jsp/common/header.jsp" %>
+
 <fmt:message key="label.error_404"/>
 
 
