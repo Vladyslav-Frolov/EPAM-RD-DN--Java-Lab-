@@ -1,4 +1,4 @@
-package com.epam.hw2.hotelproject.controller.listener;
+package com.epam.hw2.hotelproject.config.listener;
 
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;

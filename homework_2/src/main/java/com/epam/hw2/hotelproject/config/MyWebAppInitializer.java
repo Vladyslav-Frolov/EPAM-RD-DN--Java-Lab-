@@ -1,10 +1,10 @@
 package com.epam.hw2.hotelproject.config;
 
-import com.epam.hw2.hotelproject.controller.filter.AccessFilter;
-import com.epam.hw2.hotelproject.controller.filter.SessionLocaleFilter;
-import com.epam.hw2.hotelproject.controller.filter.SessionParametersFilter;
-import com.epam.hw2.hotelproject.controller.listener.ContextListener;
-import com.epam.hw2.hotelproject.controller.listener.SessionListener;
+import com.epam.hw2.hotelproject.config.filter.AccessFilter;
+import com.epam.hw2.hotelproject.config.filter.SessionLocaleFilter;
+import com.epam.hw2.hotelproject.config.filter.SessionParametersFilter;
+import com.epam.hw2.hotelproject.config.listener.ContextListener;
+import com.epam.hw2.hotelproject.config.listener.SessionListener;
 import org.springframework.web.WebApplicationInitializer;
 import org.springframework.web.context.ContextLoaderListener;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
@@ -28,7 +28,7 @@ public class MyWebAppInitializer implements WebApplicationInitializer {
         // we can add a listener to the ServletContext that will load the context:
         container.addListener(new ContextLoaderListener(context));
         // Or setting an entire package that will be scanned for configuration classes:
-//        context.setConfigLocation("com.example.app.config");
+//        context.setConfigLocation("com.epam.hw2.hotelproject");
 
         // registered other custom listeners
         container.addListener(SessionListener.class); // session

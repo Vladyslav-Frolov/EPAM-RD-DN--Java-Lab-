@@ -67,7 +67,7 @@
 <!--    <filter>
         <filter-name>SessionLocaleFilter</filter-name>
         <filter-class>
-            com.epam.finalproject.com.epam.hw2.hotelproject.controller.filter.SessionLocaleFilter
+            com.epam.finalproject.com.epam.hw2.hotelproject.config.filter.SessionLocaleFilter
         </filter-class>
         <init-param>
             <param-name>active</param-name>
@@ -101,7 +101,7 @@
 <!--    <filter>
         <filter-name>SessionParametersFilter</filter-name>
         <filter-class>
-            com.epam.finalproject.com.epam.hw2.hotelproject.controller.filter.SessionParametersFilter
+            com.epam.finalproject.com.epam.hw2.hotelproject.config.filter.SessionParametersFilter
         </filter-class>
         <init-param>
             <param-name>active</param-name>
@@ -132,7 +132,7 @@
 <!--    <filter>
         <filter-name>AccessFilter</filter-name>
         <filter-class>
-            com.epam.finalproject.com.epam.hw2.hotelproject.controller.filter.AccessFilter
+            com.epam.finalproject.com.epam.hw2.hotelproject.config.filter.AccessFilter
         </filter-class>
         <init-param>
             <param-name>active</param-name>

@@ -1,5 +1,7 @@
 package com.epam.hw2.hotelproject.config;
 
+import com.epam.hw2.hotelproject.timed.TimedController;
+import com.epam.hw2.hotelproject.timed.TimedHandlerBeanPostProcessor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
@@ -9,6 +11,11 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
+
+import javax.management.InstanceAlreadyExistsException;
+import javax.management.MBeanRegistrationException;
+import javax.management.MalformedObjectNameException;
+import javax.management.NotCompliantMBeanException;
 
 @Configuration
 @ComponentScan("com.epam.hw2.hotelproject")
@@ -36,10 +43,15 @@ public class SpringConfig implements WebMvcConfigurer {
         return viewResolver;
     }
 
-    // homepage
-/*    @Override
-    public void addViewControllers(ViewControllerRegistry registry) {
-        registry.addViewController("/").setViewName("index");
-    }*/
+    // test
+    @Bean
+    public TimedHandlerBeanPostProcessor profilingHandlerBeanPostProcessor() throws MalformedObjectNameException, NotCompliantMBeanException, InstanceAlreadyExistsException, MBeanRegistrationException {
+        return new TimedHandlerBeanPostProcessor();
+    }
+
+    @Bean
+    public TimedController profilingController(){
+        return new TimedController();
+    }
 
 }

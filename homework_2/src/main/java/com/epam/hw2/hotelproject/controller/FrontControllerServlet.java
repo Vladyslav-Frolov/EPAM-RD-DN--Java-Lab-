@@ -3,6 +3,7 @@ package com.epam.hw2.hotelproject.controller;
 import com.epam.hw2.hotelproject.Path;
 import com.epam.hw2.hotelproject.controller.command.Command;
 import com.epam.hw2.hotelproject.controller.command.CommandContainer;
+import com.epam.hw2.hotelproject.timed.Timed;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
 
-
+@Timed
 @Controller
 public class FrontControllerServlet {
     private static final Logger LOGGER = Logger.getLogger(FrontControllerServlet.class);
@@ -44,6 +45,7 @@ public class FrontControllerServlet {
                          HttpServletResponse response) throws IOException, ServletException, SQLException {
 
         LOGGER.debug("--> Controller starts");
+
         // 1. extract command name from the request
         String commandName = request.getParameter("command");
         LOGGER.trace("--> Request parameter: command --> " + commandName);
