@@ -1,4 +1,4 @@
-package com.epam.finalproject.hotel.controller.filter;
+package com.epam.finalproject.hotel.config.filter;
 
 import com.epam.finalproject.hotel.Const;
 import org.apache.log4j.Logger;

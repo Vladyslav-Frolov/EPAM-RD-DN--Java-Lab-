@@ -1,8 +1,7 @@
-package com.epam.finalproject.hotel.controller.listener;
+package com.epam.finalproject.hotel.config.listener;
 
 import org.apache.log4j.Logger;
 
-import javax.servlet.annotation.WebListener;
 import javax.servlet.http.HttpSessionEvent;
 import javax.servlet.http.HttpSessionListener;
 

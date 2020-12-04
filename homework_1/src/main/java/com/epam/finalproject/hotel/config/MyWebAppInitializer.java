@@ -1,10 +1,10 @@
 package com.epam.finalproject.hotel.config;
 
-import com.epam.finalproject.hotel.controller.filter.AccessFilter;
-import com.epam.finalproject.hotel.controller.filter.SessionLocaleFilter;
-import com.epam.finalproject.hotel.controller.filter.SessionParametersFilter;
-import com.epam.finalproject.hotel.controller.listener.ContextListener;
-import com.epam.finalproject.hotel.controller.listener.SessionListener;
+import com.epam.finalproject.hotel.config.filter.AccessFilter;
+import com.epam.finalproject.hotel.config.filter.SessionLocaleFilter;
+import com.epam.finalproject.hotel.config.filter.SessionParametersFilter;
+import com.epam.finalproject.hotel.config.listener.ContextListener;
+import com.epam.finalproject.hotel.config.listener.SessionListener;
 import org.springframework.web.WebApplicationInitializer;
 import org.springframework.web.context.ContextLoaderListener;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
