@@ -1,6 +1,8 @@
 package com.epam.hw2.hotelproject.timed;
 
-//@Component
+import org.springframework.stereotype.Component;
+
+@Component
 public class TimedController implements TimedControllerMBean {
     private boolean enabled = true;
 

@@ -2,9 +2,9 @@ package com.epam.hw2.hotelproject.controller;
 
 import com.epam.hw2.hotelproject.Path;
 import com.epam.hw2.hotelproject.controller.command.Command;
-import com.epam.hw2.hotelproject.controller.command.CommandContainer;
-import com.epam.hw2.hotelproject.timed.Timed;
+import com.epam.hw2.hotelproject.controller.command.CommandContainerImpl;
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,10 +15,13 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
 
-@Timed
+//@Timed
 @Controller
 public class FrontControllerServlet {
     private static final Logger LOGGER = Logger.getLogger(FrontControllerServlet.class);
+
+    @Autowired
+    CommandContainerImpl commandContainerImpl;
 
     @GetMapping("/frontControllerServlet")
     protected void doGet(HttpServletRequest request, HttpServletResponse response) {
@@ -63,7 +66,7 @@ public class FrontControllerServlet {
 
 
         // 2. obtain command object by its name
-        Command command = CommandContainer.get(commandName);
+        Command command = commandContainerImpl.get(commandName);
         LOGGER.trace("--> Obtained command --> " + command);
         LOGGER.trace("+ 2. pulled the command: " + commandName + " = " + command);
 
@@ -83,7 +86,7 @@ public class FrontControllerServlet {
                 forward = forward.replace("redirect/", "");
                 LOGGER.trace("4-1. I'm in redirect: " + forward);
                 response.sendRedirect(forward);
-            }else{
+            } else {
                 LOGGER.trace("4-2. I'm in forward: " + forward);
                 request.getRequestDispatcher(forward).forward(request, response);
             }

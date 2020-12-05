@@ -18,7 +18,7 @@ import javax.management.MalformedObjectNameException;
 import javax.management.NotCompliantMBeanException;
 
 @Configuration
-@ComponentScan("com.epam.hw2.hotelproject")
+@ComponentScan(basePackages = "com.epam.hw2.hotelproject")
 @EnableWebMvc
 public class SpringConfig implements WebMvcConfigurer {
 
@@ -43,14 +43,16 @@ public class SpringConfig implements WebMvcConfigurer {
         return viewResolver;
     }
 
-    // test
+    // timed
     @Bean
-    public TimedHandlerBeanPostProcessor profilingHandlerBeanPostProcessor() throws MalformedObjectNameException, NotCompliantMBeanException, InstanceAlreadyExistsException, MBeanRegistrationException {
+    public TimedHandlerBeanPostProcessor timedHandlerBeanPostProcessor()
+            throws MalformedObjectNameException, NotCompliantMBeanException,
+            InstanceAlreadyExistsException, MBeanRegistrationException {
         return new TimedHandlerBeanPostProcessor();
     }
 
     @Bean
-    public TimedController profilingController(){
+    public TimedController timedController(){
         return new TimedController();
     }
 

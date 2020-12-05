@@ -2,6 +2,7 @@ package com.epam.hw2.hotelproject.config.filter;
 
 import com.epam.hw2.hotelproject.Path;
 import com.epam.hw2.hotelproject.controller.command.CommandContainer;
+import com.epam.hw2.hotelproject.controller.command.CommandContainerImpl;
 import com.epam.hw2.hotelproject.model.Role;
 import org.apache.log4j.Logger;
 
@@ -12,6 +13,7 @@ import java.io.IOException;
 
 public class AccessFilter implements Filter {
     private static final Logger LOGGER = Logger.getLogger(AccessFilter.class);
+    CommandContainer commandContainer = new CommandContainerImpl();
 
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
             throws IOException, ServletException {
@@ -43,8 +45,10 @@ public class AccessFilter implements Filter {
         if (session == null)
             return false;
 
-        if (!CommandContainer.isAuthorized(commandName)) {
-            LOGGER.trace("filter command consist: " + CommandContainer.isAuthorized(commandName) +
+        commandContainer.commandContainerInit();
+        if (!commandContainer.isAuthorized(commandName)) {
+            LOGGER.trace("filter command consist: " +
+                    commandContainer.isAuthorized(commandName) +
                     ", do not filter, return true");
             return true;
         }

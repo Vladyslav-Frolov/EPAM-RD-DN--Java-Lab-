@@ -1,5 +1,7 @@
 package com.epam.hw2.hotelproject.model;
 
+import org.springframework.stereotype.Component;
+
 public enum Role {
     USER, ADMIN;
 

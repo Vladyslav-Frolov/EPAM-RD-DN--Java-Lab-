@@ -2,11 +2,12 @@ package com.epam.hw2.hotelproject.controller.command.commands.authorization;
 
 import com.epam.hw2.hotelproject.Path;
 import com.epam.hw2.hotelproject.controller.command.Command;
-import com.epam.hw2.hotelproject.dao.OrderDao;
-import com.epam.hw2.hotelproject.dao.UserDao;
+import com.epam.hw2.hotelproject.dao.OrderDaoImpl;
+import com.epam.hw2.hotelproject.dao.UserDaoImpl;
 import com.epam.hw2.hotelproject.model.Order;
 import com.epam.hw2.hotelproject.model.User;
 import org.apache.log4j.Logger;
+import org.springframework.stereotype.Component;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -17,6 +18,7 @@ import java.util.List;
 /**
  * Go to the Sign in conform.
  */
+@Component
 public class SignInCommand extends Command {
 
     private static final Logger LOGGER = Logger.getLogger(SignInCommand.class);
@@ -35,7 +37,7 @@ public class SignInCommand extends Command {
         // 2. Login and password validation for emptiness, etc.
 
         // 3. Getting user or getting null
-        User user = new UserDao().getUser(login, password);
+        User user = new UserDaoImpl().getUser(login, password);
         LOGGER.trace(user);
         LOGGER.trace(user.getRole());
         session.setAttribute("user", user);
@@ -50,7 +52,7 @@ public class SignInCommand extends Command {
 
         //4.1 Receiving all user orders after successful registration
         // procedure for taking out the user's order list
-        List<Order> ordersOfUsers = new OrderDao().getUserOrders((User) request.getSession().getAttribute("user"));
+        List<Order> ordersOfUsers = new OrderDaoImpl().getUserOrders((User) request.getSession().getAttribute("user"));
         ordersOfUsers.sort((o1, o2) -> (int) (o1.getId() - o2.getId()));
         request.getSession().setAttribute("ordersOfUsers", ordersOfUsers);
 

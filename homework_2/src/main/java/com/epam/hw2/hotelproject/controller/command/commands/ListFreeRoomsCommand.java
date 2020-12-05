@@ -5,6 +5,8 @@ import com.epam.hw2.hotelproject.controller.command.Command;
 import com.epam.hw2.hotelproject.dao.FreeRoomsDao;
 import com.epam.hw2.hotelproject.model.FreeRooms;
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -12,8 +14,11 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
+@Component
 public class ListFreeRoomsCommand extends Command {
     private static final Logger LOGGER = Logger.getLogger(ListFreeRoomsCommand.class);
+    @Autowired
+    FreeRoomsDao freeRoomsDao;
 
     @Override
     public String execute(HttpServletRequest request,
@@ -30,15 +35,15 @@ public class ListFreeRoomsCommand extends Command {
         }
 
         // get rooms items list
-        List<FreeRooms> freeRoomsList = new FreeRoomsDao().getFreeRooms(checkInDate, checkOutDate);
-        LOGGER.trace("Found in DB: menuItemsList --> " + freeRoomsList);
+        List<FreeRooms> freeRoomsList = freeRoomsDao.getFreeRooms(checkInDate, checkOutDate);
+        LOGGER.trace("Found in DB: menuItemsList --> freeRoomsList");
 
         // sort menu by category
         freeRoomsList.sort((o1, o2) -> (int) (o1.getId() - o2.getId()));
 
         // put menu items list to the request
         request.setAttribute("freeRoomsList", freeRoomsList);
-        LOGGER.trace("Set the request attribute: menuItems --> " + freeRoomsList);
+        LOGGER.trace("Set the request attribute: menuItems --> freeRoomsList ");
 
         LOGGER.debug("Command finished");
         return Path.PAGE_ROOMS_PRICES;

@@ -1,5 +1,8 @@
 package com.epam.hw2.hotelproject.model;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class Order extends Entity{
     private Integer clientId;
     private Integer roomId;

@@ -1,4 +1,4 @@
-package com.epam.hw2.hotelproject.dao;
+package com.epam.hw3.dao;
 
 import javax.swing.text.html.parser.Entity;
 import java.util.List;

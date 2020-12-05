@@ -1,5 +1,8 @@
 package com.epam.hw2.hotelproject.model;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class FreeRooms extends Entity {
 
     private String roomType;//

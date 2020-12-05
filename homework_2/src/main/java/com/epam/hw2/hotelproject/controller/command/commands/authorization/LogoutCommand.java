@@ -3,12 +3,13 @@ package com.epam.hw2.hotelproject.controller.command.commands.authorization;
 import com.epam.hw2.hotelproject.Path;
 import com.epam.hw2.hotelproject.controller.command.Command;
 import org.apache.log4j.Logger;
+import org.springframework.stereotype.Component;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-
+@Component
 public class LogoutCommand extends Command {
 
 
