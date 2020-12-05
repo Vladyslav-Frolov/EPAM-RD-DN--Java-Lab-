@@ -3,7 +3,7 @@ package com.epam.hw2.hotelproject.model;
 import org.springframework.stereotype.Component;
 
 @Component
-public class User extends Entity {
+public class User extends EntityImpl {
     private String login;
     private String email;
     private String password;

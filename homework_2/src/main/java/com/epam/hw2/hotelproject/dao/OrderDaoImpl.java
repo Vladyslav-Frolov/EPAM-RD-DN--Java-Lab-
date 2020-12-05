@@ -1,6 +1,7 @@
 package com.epam.hw2.hotelproject.dao;
 
 import com.epam.hw2.hotelproject.model.Order;
+import com.epam.hw2.hotelproject.model.OrderImpl;
 import com.epam.hw2.hotelproject.model.RoomStatus;
 import com.epam.hw2.hotelproject.model.User;
 import com.epam.hw2.hotelproject.timed.Timed;
@@ -15,7 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Repository
-//@Timed
+@Timed
 public class OrderDaoImpl implements OrderDao{
     private static final Logger LOGGER = Logger.getLogger(OrderDaoImpl.class);
     private static final String SQL_SELECT_LAST_ORDER = "SELECT id FROM order_flow ORDER BY id DESC LIMIT 1";
@@ -94,9 +95,9 @@ public class OrderDaoImpl implements OrderDao{
         return id;
     }
     @Override
-    public List<Order> getUserOrders(User registeredUser) {
+    public List<OrderImpl> getUserOrders(User registeredUser) {
         LOGGER.debug("getUserOrders starts");
-        List<Order> orders = new ArrayList<>();
+        List<OrderImpl> orderImpls = new ArrayList<>();
 
         try (Connection connection = ConnectionPool.getConnection();
              PreparedStatement ps = connection.prepareStatement(SQL_SELECT_USER_ORDERS)) {
@@ -107,7 +108,7 @@ public class OrderDaoImpl implements OrderDao{
             try (ResultSet rs = ps.executeQuery()) {
                 OredersOfUserItemMapper mapper = new OredersOfUserItemMapper();
                 while (rs.next()) {
-                    orders.add(mapper.mapRow(rs));
+                    orderImpls.add(mapper.mapRow(rs));
                 }
             } catch (SQLException e) {
                 e.printStackTrace();
@@ -117,32 +118,32 @@ public class OrderDaoImpl implements OrderDao{
             e.printStackTrace();
         }
         LOGGER.debug("getUserOrders finished");
-        return orders;
+        return orderImpls;
     }
 
     private static class OredersOfUserItemMapper {
 
-        private Order mapRow(ResultSet rs) {
+        private OrderImpl mapRow(ResultSet rs) {
             LOGGER.debug("mapRow starts");
-            Order order = new Order();
+            OrderImpl orderImpl = new OrderImpl();
 
             try {
-                order.setId(rs.getInt("id"));
-                order.setRoomId(rs.getInt("room number"));
-                order.setRoomType(rs.getString("room type"));
-                order.setRoomClass(rs.getString("room class"));
-                order.setCheckIn(rs.getString("in"));
-                order.setCheckOut(rs.getString("out"));
-                order.setDays(rs.getInt("days"));
-                order.setCostPerDay(rs.getDouble("cost"));
-                order.setTotalPrice(rs.getDouble("total"));
-                order.setOrderStatus(RoomStatus.values()[rs.getInt("status id") - 1]);
+                orderImpl.setId(rs.getInt("id"));
+                orderImpl.setRoomId(rs.getInt("room number"));
+                orderImpl.setRoomType(rs.getString("room type"));
+                orderImpl.setRoomClass(rs.getString("room class"));
+                orderImpl.setCheckIn(rs.getString("in"));
+                orderImpl.setCheckOut(rs.getString("out"));
+                orderImpl.setDays(rs.getInt("days"));
+                orderImpl.setCostPerDay(rs.getDouble("cost"));
+                orderImpl.setTotalPrice(rs.getDouble("total"));
+                orderImpl.setOrderStatus(RoomStatus.values()[rs.getInt("status id") - 1]);
 
             } catch (SQLException e) {
                 e.printStackTrace();
             }
             LOGGER.debug("mapRow finished");
-            return order;
+            return orderImpl;
         }
     }
 }

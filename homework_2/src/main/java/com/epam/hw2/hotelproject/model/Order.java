@@ -1,130 +1,51 @@
 package com.epam.hw2.hotelproject.model;
 
-import org.springframework.stereotype.Component;
+ public interface Order extends Entity {
+     Double getCostPerDay();
 
-@Component
-public class Order extends Entity{
-    private Integer clientId;
-    private Integer roomId;
-    private String roomType;
-    private String roomClass;
-    private String checkIn;
-    private String checkOut;
-    private Integer days;
-    private Double costPerDay;
-    private Double totalPrice;
-    private Boolean paymentStatus;
-    private String startBookingTime;
-    private RoomStatus orderStatus;
+     void setCostPerDay(Double costPerDay);
 
-    public Double getCostPerDay() {
-        return costPerDay;
-    }
+     Integer getDays();
 
-    public void setCostPerDay(Double costPerDay) {
-        this.costPerDay = costPerDay;
-    }
+     void setDays(Integer days);
 
-    public Integer getDays() {
-        return days;
-    }
+     String getRoomClass();
 
-    public void setDays(Integer days) {
-        this.days = days;
-    }
+     void setRoomClass(String roomClass);
 
-    public String getRoomClass() {
-        return roomClass;
-    }
+     String getRoomType();
 
-    public void setRoomClass(String roomClass) {
-        this.roomClass = roomClass;
-    }
+     void setRoomType(String roomType);
 
-    public String getRoomType() {
-        return roomType;
-    }
+     Integer getClientId();
 
-    public void setRoomType(String roomType) {
-        this.roomType = roomType;
-    }
+     void setClientId(Integer clientId);
 
-    public Integer getClientId() {
-        return clientId;
-    }
+     Integer getRoomId();
 
-    public void setClientId(Integer clientId) {
-        this.clientId = clientId;
-    }
+     void setRoomId(Integer roomId);
 
-    public Integer getRoomId() {
-        return roomId;
-    }
+     String getCheckIn();
 
-    public void setRoomId(Integer roomId) {
-        this.roomId = roomId;
-    }
+     void setCheckIn(String checkIn);
 
-    public String getCheckIn() {
-        return checkIn;
-    }
+     String getCheckOut();
 
-    public void setCheckIn(String checkIn) {
-        this.checkIn = checkIn;
-    }
+     void setCheckOut(String checkOut);
 
-    public String getCheckOut() {
-        return checkOut;
-    }
+     Double getTotalPrice();
 
-    public void setCheckOut(String checkOut) {
-        this.checkOut = checkOut;
-    }
+     void setTotalPrice(Double totalPrice);
 
-    public Double getTotalPrice() {
-        return totalPrice;
-    }
+     Boolean getPaymentStatus();
 
-    public void setTotalPrice(Double totalPrice) {
-        this.totalPrice = totalPrice;
-    }
+     void setPaymentStatus(Boolean paymentStatus);
 
-    public Boolean getPaymentStatus() {
-        return paymentStatus;
-    }
+     String getStartBookingTime();
 
-    public void setPaymentStatus(Boolean paymentStatus) {
-        this.paymentStatus = paymentStatus;
-    }
+     void setStartBookingTime(String startBookingTime);
 
-    public String getStartBookingTime() {
-        return startBookingTime;
-    }
+     RoomStatus getOrderStatus();
 
-    public void setStartBookingTime(String startBookingTime) {
-        this.startBookingTime = startBookingTime;
-    }
-
-    public RoomStatus getOrderStatus() {
-        return orderStatus;
-    }
-
-    public void setOrderStatus(RoomStatus orderStatus) {
-        this.orderStatus = orderStatus;
-    }
-
-    @Override
-    public String toString() {
-        return "Order{" +
-                "order id=" + super.getId() + '\'' +
-                ", clientId=" + clientId +
-                ", roomId=" + roomId +
-                ", checkIn='" + checkIn + '\'' +
-                ", checkOut='" + checkOut + '\'' +
-                ", totalPrice=" + totalPrice +
-                ", paymentStatus=" + paymentStatus +
-                ", startBookingTime='" + startBookingTime + '\'' +
-                ", orderStatus=" + orderStatus +
-                '}';
-    }
+     void setOrderStatus(RoomStatus orderStatus);
 }

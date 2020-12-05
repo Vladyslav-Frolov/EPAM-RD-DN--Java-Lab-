@@ -3,9 +3,10 @@ package com.epam.hw2.hotelproject.controller.command.commands;
 import com.epam.hw2.hotelproject.Const;
 import com.epam.hw2.hotelproject.Path;
 import com.epam.hw2.hotelproject.controller.command.Command;
-import com.epam.hw2.hotelproject.dao.ClientDaoImpl;
-import com.epam.hw2.hotelproject.dao.OrderDaoImpl;
+import com.epam.hw2.hotelproject.dao.ClientDao;
+import com.epam.hw2.hotelproject.dao.OrderDao;
 import com.epam.hw2.hotelproject.model.Order;
+import com.epam.hw2.hotelproject.model.OrderImpl;
 import com.epam.hw2.hotelproject.model.User;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,9 +28,9 @@ public class ToBookCommand extends Command {
     @Autowired
     private Order order;
     @Autowired
-    private OrderDaoImpl orderDaoImpl;
+    private OrderDao orderDao;
     @Autowired
-    private ClientDaoImpl clientDaoImpl;
+    private ClientDao clientDao;
 
     @Override
     public String execute(HttpServletRequest request,
@@ -41,9 +42,9 @@ public class ToBookCommand extends Command {
         User registeredUser = (User) request.getSession().getAttribute("user");
 
         if(!request.getSession().getAttribute(Const.COMMIT_TRUE).equals(Const.COMMIT_TRUE)){
-            order.setId(orderDaoImpl.getLastOrderId() + 1);
-            order.setClientId(clientDaoImpl.getClientId(registeredUser));// client
-            LOGGER.trace("2tb - setClientId in toBook: " + clientDaoImpl.getClientId((User) request.getSession().getAttribute("user")));
+            order.setId(orderDao.getLastOrderId() + 1);
+            order.setClientId(clientDao.getClientId(registeredUser));// client
+            LOGGER.trace("2tb - setClientId in toBook: " + clientDao.getClientId((User) request.getSession().getAttribute("user")));
             order.setRoomId(Integer.parseInt(request.getSession().getAttribute("session_room_id").toString()));// rooms
             LOGGER.trace("3tb - ... in toBook: ");
             order.setCheckIn((String) request.getSession().getAttribute("session_check_in_date")); // check in
@@ -61,7 +62,7 @@ public class ToBookCommand extends Command {
             order.setOrderStatus(UNAVAILABLE); // room order status
             LOGGER.trace("9tb - ... in toBook: ");
 
-            Boolean commitResult = orderDaoImpl.insertNewOrder(order);
+            Boolean commitResult = orderDao.insertNewOrder(order);
             if (Boolean.TRUE.equals(commitResult)) {
                 request.getSession().setAttribute(Const.COMMIT_TRUE, Const.COMMIT_TRUE);
             }
@@ -70,7 +71,7 @@ public class ToBookCommand extends Command {
         LOGGER.trace("10tb - started taking out all orders in toBook: ");
 
         // процедура вынимания списка зказа юзера
-        List<Order> ordersOfUsers = orderDaoImpl.getUserOrders(registeredUser);
+        List<OrderImpl> ordersOfUsers = orderDao.getUserOrders(registeredUser);
         ordersOfUsers.sort((o1, o2) -> (int) (o1.getId() - o2.getId()));
         request.getSession().setAttribute("ordersOfUsers", ordersOfUsers);
 

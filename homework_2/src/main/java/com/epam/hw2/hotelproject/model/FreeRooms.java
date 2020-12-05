@@ -3,7 +3,7 @@ package com.epam.hw2.hotelproject.model;
 import org.springframework.stereotype.Component;
 
 @Component
-public class FreeRooms extends Entity {
+public class FreeRooms extends EntityImpl {
 
     private String roomType;//
     private String roomClass;//++++++++++++

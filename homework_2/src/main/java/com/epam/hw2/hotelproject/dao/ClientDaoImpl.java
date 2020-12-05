@@ -1,6 +1,7 @@
 package com.epam.hw2.hotelproject.dao;
 
 import com.epam.hw2.hotelproject.model.User;
+import com.epam.hw2.hotelproject.timed.Timed;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Repository;
 
@@ -9,6 +10,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+@Timed
 @Repository
 public class ClientDaoImpl implements ClientDao {
     private static final Logger LOGGER = Logger.getLogger(ClientDaoImpl.class);
