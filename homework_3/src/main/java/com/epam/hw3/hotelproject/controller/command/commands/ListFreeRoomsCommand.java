@@ -7,10 +7,12 @@ import com.epam.hw3.hotelproject.model.FreeRooms;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.web.servlet.NoHandlerFoundException;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.ws.rs.core.HttpHeaders;
 import java.io.IOException;
 import java.util.List;
 
@@ -23,8 +25,10 @@ public class ListFreeRoomsCommand extends Command {
     @Override
     public String execute(HttpServletRequest request,
                           HttpServletResponse response) throws IOException, ServletException {
-
         LOGGER.debug("Command starts");
+
+
+
         String checkInDate = (String) request.getSession().getAttribute("session_check_in_date");
         String checkOutDate = (String) request.getSession().getAttribute("session_check_out_date");
         LOGGER.trace(checkInDate + "\n" + checkOutDate);
@@ -46,6 +50,8 @@ public class ListFreeRoomsCommand extends Command {
         LOGGER.trace("Set the request attribute: menuItems --> freeRoomsList ");
 
         LOGGER.debug("Command finished");
+
+        response.sendError(404);
         return Path.PAGE_ROOMS_PRICES;
     }
 }

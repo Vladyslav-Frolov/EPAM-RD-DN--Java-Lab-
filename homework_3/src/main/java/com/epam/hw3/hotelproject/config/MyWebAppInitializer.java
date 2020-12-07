@@ -25,14 +25,16 @@ public class MyWebAppInitializer implements WebApplicationInitializer {
         // This type of context can then be configured registering a configuration class:
          context.register(SpringConfig.class);
 
+        // registered other custom listeners
+        container.addListener(ContextListener.class); // log4j
+        container.addListener(SessionListener.class); // session
+
         // we can add a listener to the ServletContext that will load the context:
         container.addListener(new ContextLoaderListener(context));
         // Or setting an entire package that will be scanned for configuration classes:
 //        context.setConfigLocation("com.epam.hw3.hotelproject");
 
-        // registered other custom listeners
-        container.addListener(SessionListener.class); // session
-        container.addListener(ContextListener.class); // log4j
+
 
         // The next step is creating and registering our dispatcher servlet:
         ServletRegistration.Dynamic dispatcher = container

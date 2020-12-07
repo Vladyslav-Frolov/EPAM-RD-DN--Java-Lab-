@@ -11,9 +11,9 @@
     </error-page>
 
     <!--error page by Java code error type-->
-    <error-page>
+<!--    <error-page>
         <exception-type>java.lang.RuntimeException</exception-type>
-        <location>/WEB-INF/jsp/error/error_page_RuntimeExeption.jsp</location>
-    </error-page>
+        <location>/WEB-INF/jsp/error/error_page_RuntimeException.jsp</location>
+    </error-page>-->
 
 </web-app>
