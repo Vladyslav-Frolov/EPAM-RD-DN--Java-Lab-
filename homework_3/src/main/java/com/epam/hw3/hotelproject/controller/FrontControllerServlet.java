@@ -1,8 +1,8 @@
-package com.epam.hw2.hotelproject.controller;
+package com.epam.hw3.hotelproject.controller;
 
-import com.epam.hw2.hotelproject.Path;
-import com.epam.hw2.hotelproject.controller.command.Command;
-import com.epam.hw2.hotelproject.controller.command.CommandContainerImpl;
+import com.epam.hw3.hotelproject.Path;
+import com.epam.hw3.hotelproject.controller.command.Command;
+import com.epam.hw3.hotelproject.controller.command.CommandContainerImpl;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
