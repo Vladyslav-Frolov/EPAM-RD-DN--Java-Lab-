@@ -51,7 +51,6 @@ public class ListFreeRoomsCommand extends Command {
 
         LOGGER.debug("Command finished");
 
-        response.sendError(404);
         return Path.PAGE_ROOMS_PRICES;
     }
 }
